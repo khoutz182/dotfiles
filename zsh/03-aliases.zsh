@@ -1,0 +1,98 @@
+# zsh options
+setopt correctall # helpful suggestions
+setopt auto_cd # no more cd woot
+
+# Aliases
+alias sxiv="sxiv -r -t -p"
+alias vim="nvim"
+alias ls="exa"
+alias l="exa -lh"
+alias la="exa -ah"
+alias ll="exa -l"
+alias lla="exa -lah"
+alias mnt="ecryptfs-mount-private"
+alias umnt="ecryptfs-umount-private"
+
+# mac emulation
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+alias ...=../..
+alias ....=../../..
+alias .....=../../../..
+alias ......=../../../../..
+
+
+# Git
+# We wrap in a local function instead of exporting the variable directly in
+# order to avoid interfering with manually-run git commands by the user.
+function __git_prompt_git() {
+  GIT_OPTIONAL_LOCKS=0 command git "$@"
+}
+# Outputs the name of the current branch
+# Usage example: git pull origin $(git_current_branch)
+# Using '--quiet' with 'symbolic-ref' will not cause a fatal error (128) if
+# it's not a symbolic ref, but in a Git repo.
+function git_current_branch() {
+  local ref
+  ref=$(__git_prompt_git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+# Check if main exists and use instead of master
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local ref
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return
+    fi
+  done
+  echo master
+}
+alias g='git'
+
+alias ga='git add'
+alias gaa='git add --all'
+alias gapa='git add --patch'
+alias gau='git add --update'
+alias gav='git add --verbose'
+
+alias gb='git branch'
+alias gbl='git blame -b -w'
+alias gbnm='git branch --no-merged'
+alias gbr='git branch --remote'
+alias gst='git status'
+
+alias gc='git commit -v'
+alias gc!='git commit -v --amend'
+alias gcn!='git commit -v --no-edit --amend'
+alias gca='git commit -v -a'
+
+alias gclean='git clean -id'
+alias gpristine='git reset --hard && git clean -dffx'
+alias gcm='git checkout $(git_main_branch)'
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gdcw='git diff --cached --word-diff'
+alias gds='git diff --staged'
+alias gdt='git diff-tree --no-commit-id --name-only -r'
+alias gdup='git diff @{upstream}'
+alias gdw='git diff --word-diff'
+
+alias ggpull='git pull origin "$(git_current_branch)"'
+alias ggpush='git push origin "$(git_current_branch)"'
+
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'

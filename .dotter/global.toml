@@ -1,0 +1,19 @@
+
+[zsh.files]
+zshrc = "~/.zshrc"
+zshenv = "~/.zshenv"
+"zsh" = "~/.config/zsh"
+
+[alacritty.files]
+alacritty = "~/.config/alacritty/alacritty.yml"
+
+[vim.files]
+vimrc = "~/.vimrc"
+
+[git.files]
+gitconfig = "~/.gitconfigtest"
+
+[desktop.files]
+rofi = "~/.config/rofi/config.rasi"
+rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
+leftwm = "~/.config/leftwm/config.toml"

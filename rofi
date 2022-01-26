@@ -1,0 +1,8 @@
+configuration {
+    modi: "window,drun,ssh,filebrowser,run,calc";
+}
+
+/**
+ * @theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+ */
+@theme  "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
