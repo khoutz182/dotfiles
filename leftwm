@@ -76,11 +76,6 @@ command = "MoveWindowDown"
 modifier = ["modkey", "Shift"]
 key = "j"
 
-# [[keybind]]
-# command = "MoveWindowTop"
-# modifier = ["modkey"]
-# key = "Return"
-
 [[keybind]]
 command = "FocusWindowUp"
 modifier = ["modkey"]
@@ -258,3 +253,8 @@ command = "MoveToTag"
 value = "9"
 modifier = ["modkey", "Shift"]
 key = "9"
+
+[[keybind]]
+command = "ToggleFullScreen"
+modifier = ["modkey"]
+key = "f"
