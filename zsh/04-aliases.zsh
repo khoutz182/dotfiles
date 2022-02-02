@@ -17,6 +17,9 @@ alias umnt="ecryptfs-umount-private"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+# Docker helpers
+alias dc='docker-compose'
+
 alias ...=../..
 alias ....=../../..
 alias .....=../../../..
@@ -110,3 +113,10 @@ alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgr
 alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset    ' --all"
 alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
+
+# Disable correction
+alias cd='nocorrect cd'
+alias cp='nocorrect cp'
+alias grep='nocorrect grep'
+alias rg='nocorrect rg'
+alias z='nocorrect z'

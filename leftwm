@@ -1,4 +1,6 @@
-modkey = "Mod1"
+# Mod1 = alt
+# Mod4 = windows key
+modkey = "Mod4"
 mousekey = "Mod4"
 workspaces = []
 tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -257,3 +259,5 @@ key = "9"
 command = "ToggleFullScreen"
 modifier = ["modkey"]
 key = "f"
+
+# vim:ft=toml

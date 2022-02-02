@@ -12,6 +12,7 @@ vimrc = "~/.vimrc"
 
 [git.files]
 gitconfig = "~/.gitconfigtest"
+gitignore = "~/.gitignore"
 
 [desktop.files]
 rofi = "~/.config/rofi/config.rasi"
