@@ -13,9 +13,11 @@ alias lla="exa -lah"
 alias mnt="ecryptfs-mount-private"
 alias umnt="ecryptfs-umount-private"
 
-# mac emulation
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+if [[ $os == "Linux" ]]; then
+    # mac emulation
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
 
 # Docker helpers
 alias dc='docker-compose'

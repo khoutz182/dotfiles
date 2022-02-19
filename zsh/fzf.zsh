@@ -1,7 +1,10 @@
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
+if [[ $os == "Darwin" ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+else
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=bg+:#$themeColors[color01],bg:#$themeColors[color00],spinner:#$themeColors[color0C],hl:#$themeColors[color0D]"\

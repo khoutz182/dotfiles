@@ -11,7 +11,7 @@ alacritty = "~/.config/alacritty/alacritty.yml"
 vimrc = "~/.vimrc"
 
 [git.files]
-gitconfig = "~/.gitconfigtest"
+gitconfig = "~/.gitconfig"
 gitignore = "~/.gitignore"
 
 [desktop.files]

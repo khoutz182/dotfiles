@@ -99,7 +99,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Python
-let g:python3_host_prog= '/usr/bin/python'
+let g:python3_host_prog= '/usr/bin/python3'
 
 let g:rust_clip_command = 'xclip -selection clipboard'
 

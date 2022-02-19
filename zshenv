@@ -26,3 +26,6 @@ export COLOR_0C="#{{color0C}}"
 export COLOR_0D="#{{color0D}}"
 export COLOR_0E="#{{color0E}}"
 export COLOR_0F="#{{color0F}}"
+
+# Darwin or Linux
+export os=$(uname -s)
