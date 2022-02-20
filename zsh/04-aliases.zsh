@@ -22,6 +22,9 @@ fi
 # Docker helpers
 alias dc='docker-compose'
 
+# kubeseal quick hack
+alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'
+
 alias ...=../..
 alias ....=../../..
 alias .....=../../../..
