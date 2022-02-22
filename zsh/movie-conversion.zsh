@@ -2,7 +2,7 @@
 capture() {
     args=(-hide_banner)
     args+=(-loglevel fatal)
-    
+
     # video input
     VIDEO_DEVICE=$(v4l2-ctl --list-devices 2> /dev/null | grep "/dev/" | head -n 1 | xargs)
     args+=(-f v4l2)
@@ -55,6 +55,9 @@ convert() {
     args=(-hide_banner)
     # args+=(-nostats)
     args+=(-loglevel info)
+    args+=(-vsync 0)
+    args+=(-hwaccel nvdec)
+    #args+=(-hwaccel_output_format cuda)
     args+=(-i "$1")
 
     if [ -f "$2" ]; then
@@ -85,8 +88,8 @@ convert() {
         args+=(-level:v 4.1)
         args+=(-pix_fmt yuv420p) # 8 bit pixel format
         # args+=(-b:v 0)
-        args+=(-maxrate 1M)
-        args+=(-bufsize 4M)
+        #args+=(-maxrate 1M)
+        #args+=(-bufsize 4M)
         args+=(-preset slow)
         args+=(-b_strategy 2) # 0 = fast but bad, 1 = fast and default, 2 = slow but more accurate
         args+=(-x264opts ref=4:bframes=16:b_strategy=2)
@@ -127,7 +130,7 @@ add-subs() {
         echo "File $2 not found."
         return -1
     fi
-    
+
     args+=(-f srt)
     args+=(-i "$2")
 

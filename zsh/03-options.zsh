@@ -1,4 +1,5 @@
 
+setopt correctall           # helpful suggestions
 setopt AUTO_CD              # Auto changes to a directory without typing cd.
 setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
@@ -12,6 +13,9 @@ setopt RC_QUOTES            # Allow 'Henry''s Garage' instead of 'Henry'\''s Gar
 unsetopt MAIL_WARNING
 unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
                             # Use >! and >>! to bypass.
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # make keys work
 typeset -A key

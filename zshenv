@@ -8,6 +8,7 @@ bindkey -e # emacs
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 export GITHUB_TOKEN={{githubToken}}
+export POLYBAR_GITHUB_TOKEN={{polybar_ghToken}}
 export OPENWEATHERMAP_KEY={{openweathermapKey}}
 
 export COLOR_00="#{{color00}}"
