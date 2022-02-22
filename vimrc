@@ -72,6 +72,9 @@ set scrolloff=2
 set undodir=~/.vimdid
 set undofile
 
+" fix annoying yaml editing issue
+set indentkeys-=0#
+
 syntax enable
 filetype plugin indent on
 

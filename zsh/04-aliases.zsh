@@ -1,7 +1,3 @@
-# zsh options
-setopt correctall # helpful suggestions
-setopt auto_cd # no more cd woot
-
 # Aliases
 alias sxiv="sxiv -r -t -p"
 alias vim="nvim"
@@ -21,6 +17,7 @@ fi
 
 # Docker helpers
 alias dc='docker-compose'
+alias dcl='DOCKER_BUILDKIT=1 dc -f docker-compose.local.yml'
 
 # kubeseal quick hack
 alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'
@@ -99,6 +96,9 @@ alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdup='git diff @{upstream}'
 alias gdw='git diff --word-diff'
 
+alias gri='git rebase -i'
+alias grim='git rebase -i $(git_main_branch)'
+
 alias ggpull='git pull origin "$(git_current_branch)"'
 alias ggpush='git push origin "$(git_current_branch)"'
 
@@ -125,3 +125,4 @@ alias cp='nocorrect cp'
 alias grep='nocorrect grep'
 alias rg='nocorrect rg'
 alias z='nocorrect z'
+alias mv='nocorrect mv'
