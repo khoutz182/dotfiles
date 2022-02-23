@@ -31,6 +31,12 @@ key = "d"
 
 [[keybind]]
 command = "Execute"
+value = "rofi -show window"
+modifier = ["modkey"]
+key = "Tab"
+
+[[keybind]]
+command = "Execute"
 value = "alacritty"
 modifier = ["modkey"]
 key = "Return"
