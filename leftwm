@@ -24,6 +24,54 @@ modifier = []
 key = "Print"
 
 [[keybind]]
+command = "Execute"
+value = "spt pb -d $(spt l -d | rg spotifyd | awk '{print $2}') -t"
+modifier = []
+key = "XF86XK_AudioPlay"
+
+[[keybind]]
+command = "Execute"
+value = "spt pb -d $(spt l -d | rg spotifyd | awk '{print $2}') -pp"
+modifier = []
+key = "XF86XK_AudioPrev"
+
+[[keybind]]
+command = "Execute"
+value = "spt pb -d $(spt l -d | rg spotifyd | awk '{print $2}') -n"
+modifier = []
+key = "XF86XK_AudioNext"
+
+[[keybind]]
+command = "Execute"
+value = "blugon --setcurrent=\"+300\""
+modifier = []
+key = "XF86XK_MonBrightnessUp"
+
+[[keybind]]
+command = "Execute"
+value = "blugon --setcurrent=\"-300\""
+modifier = []
+key = "XF86XK_MonBrightnessDown"
+
+[[keybind]]
+command = "Execute"
+value = "pamixer -t"
+modifier = []
+key = "XF86XK_AudioMute"
+
+[[keybind]]
+command = "Execute"
+value = "pamixer -i 5"
+modifier = []
+key = "XF86XK_AudioRaiseVolume"
+
+[[keybind]]
+command = "Execute"
+value = "pamixer -d 5"
+modifier = []
+key = "XF86XK_AudioLowerVolume"
+
+[[keybind]]
 command = "DecreaseMainWidth"
 value = "5"
 modifier = ["modkey"]
