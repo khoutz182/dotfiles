@@ -75,8 +75,6 @@ alias gbr='git branch --remote'
 alias gst='git status'
 
 alias gc='git commit -v'
-alias gc!='git commit -v --amend'
-alias gcn!='git commit -v --no-edit --amend'
 alias gca='git commit -v -a'
 
 alias gclean='git clean -id'

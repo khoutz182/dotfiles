@@ -4,3 +4,12 @@ reboot_to_windows() {
 }
 
 alias r2w='reboot_to_windows'
+
+gmv() {
+    [ -z "$1" ] && echo "Parameter should be new branch name" && return
+    previous_branch=$(git_current_branch)
+    remote=$(git remote)
+    git branch -m $1
+    git push $remote :$previous_branch
+    git push $remote -u $1
+}
