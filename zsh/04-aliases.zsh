@@ -78,6 +78,7 @@ alias gc='git commit -v'
 alias gca='git commit -v -a'
 
 alias gclean='git clean -id'
+alias grs='git restore --staged'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'
 alias gcb='git checkout -b'
