@@ -17,6 +17,9 @@ unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# show completion menu when number of options is at least 2
+zstyle ':completion:*' menu select=2
+
 # make keys work
 typeset -A key
 

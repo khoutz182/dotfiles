@@ -98,6 +98,8 @@ alias gdw='git diff --word-diff'
 alias gri='git rebase -i'
 alias grim='git rebase -i $(git_main_branch)'
 
+alias groh='git reset origin/$(git_current_branch) --hard'
+
 alias ggpull='git pull origin "$(git_current_branch)"'
 alias ggpush='git push origin "$(git_current_branch)"'
 
