@@ -1,4 +1,5 @@
 # Aliases
+alias zrl="source ~/.zshrc"
 alias sxiv="sxiv -r -t -p"
 alias vim="nvim"
 alias ls="exa"
@@ -78,6 +79,7 @@ alias gc='git commit -v'
 alias gca='git commit -v -a'
 
 alias gclean='git clean -id'
+alias gr='git restore'
 alias grs='git restore --staged'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gcm='git checkout $(git_main_branch)'
