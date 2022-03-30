@@ -24,10 +24,14 @@ Plug 'airblade/vim-rooter'
 Plug 'itchyny/lightline.vim'
 
 " Color helper
-Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'norcalli/nvim-colorizer.lua' " old
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Async linter
 Plug 'w0rp/ale'
+
+" git things
+Plug 'samoshkin/vim-mergetool'
 
 " get dat fuzzy finder yo
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -75,12 +79,15 @@ set undofile
 " fix annoying yaml editing issue
 set indentkeys-=0#
 
+" vertical diffing
+set diffopt+=vertical
+
 syntax enable
 filetype plugin indent on
 
 " Color helpers
 set termguicolors
-lua require'colorizer'.setup()
+" lua require'colorizer'.setup() " old
 
 " ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()

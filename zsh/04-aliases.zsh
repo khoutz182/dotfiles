@@ -17,8 +17,8 @@ if [[ $os == "Linux" ]]; then
 fi
 
 # Docker helpers
-alias dc='docker-compose'
-alias dcl='DOCKER_BUILDKIT=1 dc -f docker-compose.local.yml'
+alias dc='docker compose'
+alias dcl='DOCKER_BUILDKIT=1 docker compose -f docker-compose.local.yml'
 
 # kubeseal quick hack
 alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'
@@ -30,6 +30,10 @@ alias ......=../../../../..
 
 
 # Git
+
+# CLI diff tool
+alias vimdiff='nvim -d'
+
 # We wrap in a local function instead of exporting the variable directly in
 # order to avoid interfering with manually-run git commands by the user.
 function __git_prompt_git() {
