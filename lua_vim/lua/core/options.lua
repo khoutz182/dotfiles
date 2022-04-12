@@ -24,7 +24,7 @@ o.showmode = false
 o.shortmess = o.shortmess .. 'c'
 
 -- window scoped options
-wo.relativenumber = true
+--wo.relativenumber = true
 wo.number = true
 wo.wrap = false
 
