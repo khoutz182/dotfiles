@@ -5,11 +5,20 @@ mousekey = "Mod4"
 workspaces = []
 tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "CenterMain", "CenterMainBalanced", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
-layout_mode = "Workspace"
-scratchpad = []
+layout_mode = "Tag" # Workspace or Tag
+scratchpad = [
+    { name = "Alacritty", value = "alacritty", x = 0.25, y = 0.35, height = 0.30, width = 0.50 },
+]
 disable_current_tag_swap = false
+# Can be Sloppy, ClickTo, Driven, or Event
 focus_behaviour = "Sloppy"
 focus_new_windows = true
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "Alacritty"
+modifier = ["modkey"]
+key = "p"
 
 [[keybind]]
 command = "IncreaseMainWidth"

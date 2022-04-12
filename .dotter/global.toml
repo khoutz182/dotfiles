@@ -8,7 +8,11 @@ zshenv = "~/.zshenv"
 alacritty = "~/.config/alacritty/alacritty.yml"
 
 [vim.files]
-vimrc = "~/.vimrc"
+vim_init = "~/.config/nvim/init.vim"
+nvim_luaconfig = "~/.config/nvim/lua/config.lua"
+
+[nvim_lua.files]
+"lua_vim" = "~/.config/nvim"
 
 [git.files]
 gitconfig = "~/.gitconfig"

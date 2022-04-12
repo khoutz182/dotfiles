@@ -21,7 +21,9 @@ call plug#begin()
 
 " Switch to a git root directory in vim if editing a tracked file
 Plug 'airblade/vim-rooter'
-Plug 'itchyny/lightline.vim'
+
+" *lines
+Plug 'nvim-lualine/lualine.nvim'
 
 " Color helper
 " Plug 'norcalli/nvim-colorizer.lua' " old
@@ -30,7 +32,9 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Async linter
 Plug 'w0rp/ale'
 
-" git things
+" merging tools
+" https://www.youtube.com/watch?v=VxpCgQyUXlI&t=429s
+" https://github.com/samoshkin/vim-mergetool
 Plug 'samoshkin/vim-mergetool'
 
 " get dat fuzzy finder yo
@@ -57,6 +61,9 @@ Plug 'lervag/vimtex'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 
 call plug#end()
+
+" Importing lua scripts
+" lua require('config')
 
 " Settings
 
@@ -120,9 +127,8 @@ let g:ale_fixers = {
 \   'tex': ['latexindent', 'textlint'],
 \}
 
+" Language Server + ale
 let g:ale_fix_on_save = 1
-
-" Language Server
 let g:LanguageClient_serverCommands = {
 	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
 \ }
@@ -155,3 +161,15 @@ nmap <leader>cr :Crun<CR>
 " FZF stuffs
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" Mergetool
+"
+" (m) - working tree version of MERGED file
+" (r) - remote revision
+" (b) - base revision
+" mr = default
+let g:mergetool_layout = 'mr'
+nmap <leader>mt <plug>(MergetoolToggle)
+
+" allowed values: 'local' (default), 'remote', 'base'
+let g:mergetool_prefer_revision = 'local'

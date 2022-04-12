@@ -34,9 +34,22 @@
     hunk-header-style = omit
 [merge]
     conflictstyle = diff3
+    tool = nvim-mergetool
+[mergetool]
+    prompt = false
+    keepBackup = false
 [interactive]
     diffFilter = delta --color-only
 [init]
 	defaultBranch = master
 [core]
 	excludesfile = ~/.gitignore
+[mergetool "gdiff"]
+    cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+[mergetool "nvim"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+[mergetool "nvim-mergetool"]
+    cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+    trustExitCode = true
+
+# vim:ft=gitconfig
