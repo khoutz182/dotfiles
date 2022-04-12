@@ -17,6 +17,6 @@ map('', '<leader>gf', ":lua require('telescope.builtin').git_files()<cr>")
 map('', '<leader>gs', ":lua require('telescope.builtin').grep_string()<cr>")
 map('', '<leader>ts', ":lua require('telescope.builtin').treesitter()<cr>")
 
-map('', '<leader>sv', ':luafile /home/kevin/.config/nvim/init.lua<cr>')
+map('', '<leader>sv', ':luafile $HOME/.config/nvim/init.lua<cr>')
 
 map('', '<leader>,', '<c-^><cr>')

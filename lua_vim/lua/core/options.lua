@@ -45,4 +45,9 @@ vim.cmd [[
 	syntax enable
 	filetype plugin indent on
 	set indentkeys-=0#
+
+	augroup packer_user_config
+		autocmd!
+		autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+	augroup end
 ]]
