@@ -1,6 +1,7 @@
-source "$HOME/.cargo/env"
 
 export EDITOR=nvim
+
+export ZSH_AUTOSUGGEST_MANUAL_REBIND="true"
 
 # https://unix.stackexchange.com/questions/197839/why-does-exporting-vim-as-editor-in-zsh-disable-keyboard-shortcuts
 bindkey -e # emacs
@@ -30,3 +31,4 @@ export COLOR_0F="#{{color0F}}"
 
 # Darwin or Linux
 export os=$(uname -s)
+

@@ -5,9 +5,10 @@
 
 
 local modules = {
-	"plugins",
 	"core.options",
-	"core.mappings",
+	"plugins",
+	"plugins.config",
+	"core.mappings"
 }
 
 for _, module in ipairs(modules) do
