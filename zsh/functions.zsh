@@ -13,3 +13,14 @@ gmv() {
     git push $remote :$previous_branch
     git push $remote -u $1
 }
+
+bbdp() {
+	origin="$(pwd)"
+	cd /home/kevin/src/unifyd/backend
+	mvn -e -B package -DskipTests
+	docker build -f .github/Dockerfile -t backend:latest .
+	docker tag g backend:latest 866298170914.dkr.ecr.us-east-1.amazonaws.com/backend:latest
+	docker push 866298170914.dkr.ecr.us-east-1.amazonaws.com/backend:latest
+	cd "$origin"
+}
+

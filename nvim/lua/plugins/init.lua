@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
 	-- terraform
 	use("hashivim/vim-terraform")
 
+	-- terminal integration
+	use("akinsho/toggleterm.nvim")
+
 	-- status line
 	use("nvim-lualine/lualine.nvim")
 	use("kyazdani42/nvim-web-devicons")
@@ -39,7 +42,10 @@ return require('packer').startup(function(use)
 	use({"lervag/vimtex", opt=true})
 
 	-- fuzzy finding
-	use({'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } })
+	use({'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}})
+
+	use({'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

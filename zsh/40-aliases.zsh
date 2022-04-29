@@ -21,7 +21,7 @@ alias dc='docker compose'
 alias dcl='DOCKER_BUILDKIT=1 docker compose -f docker-compose.local.yml'
 
 # kubeseal quick hack
-alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'
+# alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'
 
 alias ...=../..
 alias ....=../../..

@@ -28,8 +28,8 @@ require('telescope').setup({
 		file_ignore_patterns = { "node_modules" },
 	},
 	pickers = {
-		find_files = {
-			theme = "dropdown",
-		},
+--		find_files = {
+--			theme = "dropdown",
+--		},
 	},
 })
