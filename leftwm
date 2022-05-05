@@ -115,15 +115,27 @@ modifier = ["modkey", "Shift"]
 key = "r"
 
 [[keybind]]
+command = "SetLayout"
+value = "Monocle"
+modifier = ["modkey"]
+key = "m"
+
+[[keybind]]
+command = "SetLayout"
+value = "MainAndVertStack"
+modifier = ["modkey"]
+key = "n"
+
+[[keybind]]
 command = "HardReload"
 modifier = ["modkey", "Control", "Shift"]
 key = "r"
 
-[[keybind]]
-command = "Execute"
-value = "loginctl kill-session $XDG_SESSION_ID"
-modifier = ["modkey", "Shift"]
-key = "esc"
+#[[keybind]]
+#command = "Execute"
+#value = "loginctl kill-session $XDG_SESSION_ID"
+#modifier = ["modkey", "Shift"]
+#key = "esc"
 
 [[keybind]]
 command = "Execute"

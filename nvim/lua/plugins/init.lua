@@ -15,6 +15,8 @@ return require('packer').startup(function(use)
 
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
+	use("numToStr/Comment.nvim")
+
 	-- completion
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")

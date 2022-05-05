@@ -1,3 +1,5 @@
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
 require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = false,
@@ -21,7 +23,8 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     mappings = {
       custom_only = false,
       list = {
-        -- user mappings go here
+		  { key = "h", cb = tree_cb "close_node" },
+		  { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
       },
     },
   },
@@ -69,7 +72,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 400,
   },
   actions = {
