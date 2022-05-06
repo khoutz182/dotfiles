@@ -11,6 +11,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GITHUB_TOKEN={{githubToken}}
 export POLYBAR_GITHUB_TOKEN={{polybar_ghToken}}
 export OPENWEATHERMAP_KEY={{openweathermapKey}}
+export JIRA_TOKEN={{jiraToken}}
 
 export COLOR_00="#{{color00}}"
 export COLOR_01="#{{color01}}"
