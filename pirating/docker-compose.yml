@@ -1,0 +1,172 @@
+version: "3.4"
+services:
+  vpn:
+    container_name: vpn
+    image: ghcr.io/tprasadtp/protonvpn:latest
+    restart: unless-stopped
+    networks:
+      - internet
+      - proxy
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    # expose:
+    #  - 8112
+    ports:
+      - 8112:8112
+    environment:
+      PROTONVPN_USERNAME: ${PROTONVPN_USERNAME}
+      PROTONVPN_PASSWORD: ${PROTONVPN_PASSWORD}
+      PROTONVPN_SERVER: ${PROTONVPN_SERVER:-P2P}
+      PROTONVPN_TIER: ${PROTONVPN_TIER:-2}
+      PROTONVPN_PROTOCOL: ${PROTONVPN_PROTOCOL:-udp}
+      PROTONVPN_FAIL_THRESHOLD: ${PROTONVPN_FAIL_THRESHOLD:-999}
+  deluge:
+    container_name: deluge
+    image: linuxserver/deluge:latest
+    network_mode: service:vpn
+    depends_on:
+      - vpn
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DOWNLOAD_DIR}/downloads:/downloads
+      - ./config/deluge:/config
+  sonarr:
+    container_name: sonarr
+    image: lscr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    depends_on:
+      - jackett
+      - deluge
+    networks:
+      - internet
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=${PUID} # default user id, defined in .env
+      - PGID=${PGID} # default group id, defined in .env
+      - TZ=${TZ} # timezone, defined in .env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/sonarr:/config
+      - ${DOWNLOAD_DIR}/complete/tv:/tv
+      - ${DOWNLOAD_DIR}/downloads:/downloads
+
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett:latest
+    restart: unless-stopped
+    ports:
+      - 9117:9117
+    networks:
+      - internet
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${DOWNLOAD_DIR}/downloads/torrent-blackhole:/downloads
+      - ./config/jackett:/config
+  radarr:
+    container_name: radarr
+    image: lscr.io/linuxserver/radarr:latest
+    networks:
+      - internet
+    depends_on:
+      - jackett
+      - deluge
+    environment:
+      - PUID=${PGID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./config/radarr:/config
+      - ${DOWNLOAD_DIR}/complete/movies:/movies
+      - ${DOWNLOAD_DIR}/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  unmanic:
+    container_name: unmanic
+    image: josh5/unmanic:latest
+    ports:
+      - 8888:8888
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - ${DOWNLOAD_DIR}/complete:/library
+      - /tmp/unmanic-cache:/tmp/unmanic
+      - ./config/unmanic:/config
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, utility, compute, graphics, video]
+      #  tdarr:
+      #    container_name: tdarr
+      #    image: haveagitgat/tdarr:latest
+      #    restart: unless-stopped
+      #    network_mode: bridge
+      #    ports:
+      #      - 8265:8265 # webUI port
+      #      - 8266:8266 # server port
+      #      - 8267:8267 # node port
+      #    environment:
+      #      - TZ=${TZ}
+      #      - PUID=${PUID}
+      #      - PGID=${PGID}
+      #      - UMASK_SET=002
+      #      - serverIP=0.0.0.0
+      #      - serverPort=8266
+      #      - webUIPort=8265
+      #    volumes:
+      #      - ./config/tdarr:/app/configs
+      #      - ./config/tdarr/logs:/app/logs
+      #      - ./config/tdarr/server:/app/server
+      #      - ${DOWNLOAD_DIR}/complete:/media
+      #      - ./config/tdarr/cache:/temp
+      #  tdarr-node:
+      #    container_name: tdarr-node
+      #    image: haveagitgat/tdarr_node:latest
+      #    restart: unless-stopped
+      #    network_mode: service:tdarr
+      #    environment:
+      #      - PUID=${PUID}
+      #      - PGID=${PGID}
+      #      - TZ=${TZ}
+      #      - NVIDIA_VISIBLE_DEVICES=all
+      #      - NVIDIA_DRIVER_CAPABILITIES=all
+      #      - UMASK_SET=002
+      #      - nodeID=MainNode
+      #      - nodeIP=0.0.0.0
+      #      - nodePort=8267
+      #      - serverIP=0.0.0.0
+      #      - serverPort=8266
+      #    deploy:
+      #      resources:
+      #        reservations:
+      #          devices:
+      #            - driver: nvidia
+      #              count: all
+      #              capabilities: [gpu, utility, compute, graphics, video]
+      #    volumes:
+      #      - ./config/tdarr:/app/configs
+      #      - ./config/tdarr/logs:/app/logs
+      #      - ${DOWNLOAD_DIR}/complete:/media
+      #      - ./config/tdarr/cache:/temp
+
+
+networks:
+  internet:
+  proxy:
+    internal: true

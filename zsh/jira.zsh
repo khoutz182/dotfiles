@@ -3,9 +3,9 @@
 JIRA_HOST="https://unifyd.atlassian.net"
 SEARCH_ENDPOINT="/rest/api/3/search"
 
-USER="kevin.houtz@unifydinsights.com"
+JIRA_USER="kevin.houtz@unifydinsights.com"
 
-jira() {
+jira_func() {
 	#################################################
 	################## QUERIES ######################
 	#################################################
@@ -26,7 +26,7 @@ jira() {
 		-s \
 		$url \
 		--json $payload \
-		--user ${USER}:${JIRA_TOKEN})
+		--user ${JIRA_USER}:${JIRA_API_TOKEN})
 
 	# echo $response | jq . > temp.json
 	# '^' is used as a separator, presumably not too many ticket descriptions have that character in them

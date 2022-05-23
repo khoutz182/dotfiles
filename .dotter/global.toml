@@ -18,3 +18,6 @@ gitignore = "~/.gitignore"
 rofi = "~/.config/rofi/config.rasi"
 rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
 leftwm = "~/.config/leftwm/config.toml"
+
+[pirating.files]
+"pirating" = "~/pirating"
