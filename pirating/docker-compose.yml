@@ -99,19 +99,10 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=all
     volumes:
       - ${DOWNLOAD_DIR}/complete:/library
       - /tmp/unmanic-cache:/tmp/unmanic
       - ./config/unmanic:/config
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu, utility, compute, graphics, video]
       #  tdarr:
       #    container_name: tdarr
       #    image: haveagitgat/tdarr:latest
