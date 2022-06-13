@@ -1,4 +1,4 @@
-local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 
 require('lualine').setup {
 	options = {
@@ -15,7 +15,7 @@ require('lualine').setup {
 		lualine_b = {'branch', 'diff', 'diagnostics'},
 		lualine_c = {
 			'filename',
-			{ gps.get_location, cond = gps.is_available }
+  			{ navic.get_location, cond = navic.is_available }
 		},
 		lualine_x = {'encoding', 'fileformat', 'filetype'},
 		lualine_y = {'progress'},

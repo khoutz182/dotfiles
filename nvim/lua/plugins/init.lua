@@ -17,8 +17,7 @@ return require('packer').startup(function(use)
 
 	use("numToStr/Comment.nvim")
 
-
-	use("SmiteshP/nvim-gps")
+    use("SmiteshP/nvim-navic")
 
 	-- completion
 	use("hrsh7th/cmp-nvim-lsp")

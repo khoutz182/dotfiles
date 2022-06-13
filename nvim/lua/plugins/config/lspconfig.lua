@@ -1,4 +1,7 @@
 -- Mappings.
+
+local navic = require("nvim-navic")
+
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -11,6 +14,8 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  navic.attach(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -29,7 +34,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server' }
+local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server', 'sumneko_lua' }
 
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
