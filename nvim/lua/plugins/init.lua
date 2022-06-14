@@ -11,7 +11,8 @@ return require('packer').startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("neovim/nvim-lspconfig")
 
-	use("RRethy/nvim-base16")
+	-- use("RRethy/nvim-base16")
+	use("marko-cerovac/material.nvim")
 
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 

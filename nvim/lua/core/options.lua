@@ -43,10 +43,10 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 vim.cmd [[
 	filetype plugin indent on
 	set indentkeys-=0#
-	colorscheme base16-gruvbox-dark-hard
 
 	augroup packer_user_config
 		autocmd!
 		autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 	augroup end
 ]]
+
