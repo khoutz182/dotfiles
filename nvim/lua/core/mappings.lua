@@ -32,3 +32,7 @@ map('', '<leader>hs', ':split<CR>')
 map('n', '<C-n>', ':NvimTreeToggle<CR>')
 
 map('n', '<C-t>', ':ToggleTerm<CR>')
+
+-- system clipboard
+map('', '<leader>y', '"+y')
+map('', '<leader>p', '"+p')
