@@ -34,6 +34,12 @@ key = "Print"
 
 [[keybind]]
 command = "Execute"
+value = "pass otp aws-secret -c && dunstify \"aws otp copied\""
+modifier = ["modkey"]
+key = "o"
+
+[[keybind]]
+command = "Execute"
 value = "spt pb -d $(spt l -d | rg spotifyd | awk '{print $2}') -t"
 modifier = []
 key = "XF86XK_AudioPlay"

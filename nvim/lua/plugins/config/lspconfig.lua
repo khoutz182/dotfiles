@@ -80,7 +80,9 @@ require('lspconfig').yamlls.setup {
 	settings = {
 		yaml = {
 			schemas = {
-				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+				["https://json.schemastore.org/kustomization.json"] = "kustomization.yaml",
+				["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.9/all.json"] = "/*.k8s.yaml"
 			}
 		}
 	}
