@@ -46,10 +46,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server' }
+local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server', 'pyright' }
 
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
