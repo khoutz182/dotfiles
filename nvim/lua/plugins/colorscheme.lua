@@ -1,2 +1,5 @@
--- https://github.com/EdenEast/nightfox.nvim
-vim.cmd("colorscheme terafox")
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+require("catppuccin").setup()
+
+
+vim.cmd("colorscheme catppuccin")

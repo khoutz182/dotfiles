@@ -9,10 +9,15 @@ return require('packer').startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	use("nvim-lua/plenary.nvim")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 
-	-- use("RRethy/nvim-base16")
-	use("EdenEast/nightfox.nvim")
+	-- use("EdenEast/nightfox.nvim")
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin"
+	})
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 

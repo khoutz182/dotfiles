@@ -1,6 +1,7 @@
 
 local plugins = {
 	"lspconfig",
+	"mason",
 	"lualine",
 	"colorizer",
 	"telescope",
