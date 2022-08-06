@@ -27,3 +27,9 @@ bbdp() {
 jvm() {
 	export JAVA_HOME=$(/usr/libexec/java_home -v $1)
 }
+
+jelly-cp() {
+	DIRECTORY="${2:-movies}"
+	POD=$(kubectl get pods -n app-jellyfin --no-headers -o custom-columns=":metadata.name")
+	kubectl cp $1 app-jellyfin/${POD}:/media/${DIRECTORY}
+}
