@@ -30,6 +30,7 @@ jvm() {
 
 jelly-cp() {
 	DIRECTORY="${2:-movies}"
+	echo "sending to /media/${DIRECTORY}"
 	POD=$(kubectl get pods -n app-jellyfin --no-headers -o custom-columns=":metadata.name")
 	kubectl cp $1 app-jellyfin/${POD}:/media/${DIRECTORY}
 }

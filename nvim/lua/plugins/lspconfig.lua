@@ -54,7 +54,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server', 'pyright' }
+local servers = { 'yamlls', 'dockerls', 'texlab', 'terraformls', 'rust_analyzer', 'kotlin_language_server', 'jedi_language_server' }
 
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {

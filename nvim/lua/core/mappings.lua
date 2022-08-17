@@ -10,10 +10,14 @@ vim.g.mapleader = ','
 
 
 -- fuzzy finder
-map('n', '<leader>ff', require'telescope.builtin'.find_files)
-map('', '<leader>gf', require'telescope.builtin'.git_files)
-map('', '<leader>gs', require'telescope.builtin'.grep_string)
-map('', '<leader>ts', require'telescope.builtin'.treesitter)
+map('n', '<leader>ff', require('telescope.builtin').find_files)
+map('', '<leader>fg', require('telescope.builtin').live_grep)
+map('', '<leader>fb', require('telescope.builtin').buffers)
+map('', '<leader>gs', require('telescope.builtin').grep_string)
+map('', '<leader>ts', require('telescope.builtin').treesitter)
+
+map('', '<leader>lds', require('telescope.builtin').lsp_document_symbols)
+map('', '<leader>lws', require('telescope.builtin').lsp_workspace_symbols)
 
 map('', '<leader>sv', ':luafile $HOME/.config/nvim/init.lua<CR>')
 map('', '<leader>sc', ':so %<CR>')
