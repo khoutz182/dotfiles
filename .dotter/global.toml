@@ -24,3 +24,6 @@ leftwm = "~/.config/leftwm/config.toml"
 
 [wezterm.files]
 wezterm = "~/.config/wezterm"
+
+[aws.files]
+aws = "~/.aws"

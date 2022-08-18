@@ -1,0 +1,10 @@
+[default]
+region=us-east-1
+output=json
+mfa_serial = arn:aws:iam::866298170914:mfa/unifyd_kevin
+credential_process = /usr/bin/aws-vault exec --json --prompt={{vault_prompt}} default
+
+[profile terraform]
+role_arn = arn:aws:iam::866298170914:role/terraform_role
+role_session_name = session_terraform
+credential_process = /usr/bin/aws-vault exec --no-session --json --prompt={{vault_prompt}} default
