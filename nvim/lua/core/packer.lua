@@ -14,10 +14,11 @@ return require('packer').startup(function(use)
 	use("neovim/nvim-lspconfig")
 
 	-- use("EdenEast/nightfox.nvim")
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin"
-	})
+	-- use({
+	-- 	"catppuccin/nvim",
+	-- 	as = "catppuccin"
+	-- })
+	use({"briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim"})
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 

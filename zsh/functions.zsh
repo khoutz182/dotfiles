@@ -24,13 +24,15 @@ bbdp() {
 	cd "$origin"
 }
 
-jvm() {
-	export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-}
-
 jelly-cp() {
 	DIRECTORY="${2:-movies}"
 	echo "sending to /media/${DIRECTORY}"
 	POD=$(kubectl get pods -n app-jellyfin --no-headers -o custom-columns=":metadata.name")
 	kubectl cp $1 app-jellyfin/${POD}:/media/${DIRECTORY}
 }
+
+jq-to-less() {
+	jq -C ${1} | less -R
+}
+
+alias jql='jq-to-less'

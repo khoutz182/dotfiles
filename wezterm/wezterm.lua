@@ -13,7 +13,8 @@ for i = 1, 8 do
 end
 
 return {
-	color_scheme = 'Catppuccin Macchiato',
+	-- color_scheme = 'Catppuccin Macchiato',
+	color_scheme = 'Darcula (base16)',
 
 	leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000},
 	keys = mykeys,

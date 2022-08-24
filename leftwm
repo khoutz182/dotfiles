@@ -12,6 +12,7 @@ scratchpad = [
 disable_current_tag_swap = false
 # Can be Sloppy, ClickTo, Driven, or Event
 focus_behaviour = "Sloppy"
+sloppy_mouse_follows_focus = true
 focus_new_windows = true
 
 [[keybind]]

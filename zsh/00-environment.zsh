@@ -1,5 +1,8 @@
 export LANG=en_US.UTF-8
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+
 # Colors
 declare -A themeColors
 
