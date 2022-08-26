@@ -7,23 +7,17 @@ zshenv = "~/.zshenv"
 [alacritty.files]
 alacritty = "~/.config/alacritty/alacritty.yml"
 
-[nvim.files]
-nvim = { target = "~/.config/nvim", type = "symbolic" }
-
 [git.files]
 gitconfig = "~/.gitconfig"
 gitignore = "~/.gitignore"
 
 [desktop.files]
-rofi = "~/.config/rofi/config.rasi"
+"config" = "~/.config"
+# "config/spotifyd/spotifyd.conf" = "~/.config/spotifyd/spotifyd.conf"
 rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
-leftwm = "~/.config/leftwm/config.toml"
 
 [pirating.files]
 "pirating" = "~/pirating"
-
-[wezterm.files]
-wezterm = "~/.config/wezterm"
 
 [aws.files]
 aws = "~/.aws"
