@@ -82,6 +82,8 @@ alias gst='git status'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 
+alias gwt='git worktree'
+
 alias gclean='git clean -id'
 alias gr='git restore'
 alias grs='git restore --staged'

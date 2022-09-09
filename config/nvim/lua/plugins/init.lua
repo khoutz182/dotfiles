@@ -11,6 +11,7 @@ local plugins = {
 	"toggleterm",
 	"comment",
 	"colorscheme",
+	"diffview",
 }
 
 for _, plugin in ipairs(plugins) do
