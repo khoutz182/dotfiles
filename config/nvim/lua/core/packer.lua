@@ -13,11 +13,6 @@ return require('packer').startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 
-	-- use("EdenEast/nightfox.nvim")
-	-- use({
-	-- 	"catppuccin/nvim",
-	-- 	as = "catppuccin"
-	-- })
 	use({"briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim"})
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -58,6 +53,8 @@ return require('packer').startup(function(use)
 	use({ 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } })
 
 	use({ 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } })
+
+	use({"sindrets/diffview.nvim", requires = { "nvim-lua/plenary.nvim" }})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

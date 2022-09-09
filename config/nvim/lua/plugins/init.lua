@@ -10,7 +10,7 @@ local plugins = {
 	"nvimtree",
 	"toggleterm",
 	"comment",
-	"colorscheme"
+	"colorscheme",
 }
 
 for _, plugin in ipairs(plugins) do

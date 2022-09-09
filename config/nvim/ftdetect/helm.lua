@@ -3,7 +3,7 @@
 -- " Use { {/* */} } as comments
 -- autocmd FileType helm setlocal commentstring={ {/*\ %s\ */} }
 
-local group = vim.api.nvim_create_augroup("helm")
+local group = vim.api.nvim_create_augroup("helm", {clear = false})
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 	pattern = {
 		"*/templates/*.yaml",
@@ -11,6 +11,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 		"*.gotmpl",
 		"helmfile.yaml"
 	},
-	command = [[set ft=helm]],
+	command = [[set ft=gotmpl]],
 	group = group
 })
