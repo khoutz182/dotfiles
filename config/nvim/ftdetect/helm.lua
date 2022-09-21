@@ -11,6 +11,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 		"*.gotmpl",
 		"helmfile.yaml"
 	},
-	command = [[set ft=gotmpl]],
+	command = [[set ft=helm]],
 	group = group
 })
