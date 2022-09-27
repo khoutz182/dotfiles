@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-	use("numToStr/Comment.nvim")
 
 	use("SmiteshP/nvim-navic")
 
@@ -32,6 +31,10 @@ return require('packer').startup(function(use)
 		"L3MON4D3/LuaSnip",
 		requires = { "saadparwaiz1/cmp_luasnip" },
 	})
+
+	-- eww
+	use("elkowar/yuck.vim")
+	use("gpanders/nvim-parinfer")
 
 	-- terraform
 	use("hashivim/vim-terraform")
@@ -48,6 +51,9 @@ return require('packer').startup(function(use)
 
 	-- LaTeX editing
 	use({ "lervag/vimtex", opt = true })
+
+	-- Commenting
+	use("numToStr/Comment.nvim")
 
 	-- fuzzy finding
 	use({ 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } })

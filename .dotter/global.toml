@@ -12,8 +12,10 @@ gitconfig = "~/.gitconfig"
 gitignore = "~/.gitignore"
 
 [desktop.files]
-"config" = "~/.config"
-# "config/spotifyd/spotifyd.conf" = "~/.config/spotifyd/spotifyd.conf"
+"config" = { target = "~/.config", type = "symbolic" }
+"config/alacritty" = { target = "~/.config/alacritty", type = "template" }
+"config/spotifyd" = { target = "~/.config/spotifyd", type = "template" }
+
 rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
 
 [pirating.files]

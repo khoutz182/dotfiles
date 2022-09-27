@@ -12,7 +12,10 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 	callback = function()
 		vim.diagnostic.disable()
 		vim.bo.filetype = "gotmpl"
-		-- vim.opt_local.commentstring = "{ {/* %s */} }" -- spaces to avoid issues with dotter
+		vim.bo.expandtab = true
+		vim.bo.smartindent = true
+		vim.bo.tabstop = 2
+		vim.bo.shiftwidth = 2
 	end,
 	group = group
 })

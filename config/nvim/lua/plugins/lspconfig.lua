@@ -57,7 +57,8 @@ local servers = {
 	'rust_analyzer',
 	'kotlin_language_server',
 	'jedi_language_server',
-	'gopls'
+	'gopls',
+	"css-lsp"
 }
 
 for _, lsp in pairs(servers) do
