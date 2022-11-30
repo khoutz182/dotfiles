@@ -59,6 +59,8 @@ require("mason-lspconfig").setup_handlers {
 	-- end
 	["sumneko_lua"] = function()
 		require("lspconfig").sumneko_lua.setup {
+			handlers = handlers,
+			on_attach = on_attach,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -71,6 +73,8 @@ require("mason-lspconfig").setup_handlers {
 
 	["yamlls"] = function()
 		require("lspconfig").yamlls.setup {
+			handlers = handlers,
+			on_attach = on_attach,
 			settings = {
 				yaml = {
 					schemas = {

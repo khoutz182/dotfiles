@@ -12,6 +12,7 @@ local plugins = {
 	"comment",
 	"colorscheme",
 	"diffview",
+	"gitsigns",
 }
 
 for _, plugin in ipairs(plugins) do

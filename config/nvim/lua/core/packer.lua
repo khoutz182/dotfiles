@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-
 	use("SmiteshP/nvim-navic")
 
 	-- completion
@@ -25,6 +24,8 @@ return require('packer').startup(function(use)
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/nvim-cmp")
+
+	use("lewis6991/gitsigns.nvim")
 
 	-- snippets
 	use({
