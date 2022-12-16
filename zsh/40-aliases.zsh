@@ -135,3 +135,6 @@ alias grep='nocorrect grep'
 alias rg='nocorrect rg'
 alias z='nocorrect z'
 alias mv='nocorrect mv'
+
+# download youtubes
+alias ytd='yt-dlp "$(pbpaste)"'
