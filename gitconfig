@@ -45,6 +45,6 @@
 [core]
 	excludesfile = ~/.gitignore
 [mergetool "nvim"]
-	cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c 'wincmd l' -c 'norm ]c'"
+	cmd = "nvim -c 'DiffviewOpen'"
 
 # vim:ft=gitconfig
