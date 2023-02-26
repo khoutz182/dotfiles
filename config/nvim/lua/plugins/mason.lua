@@ -85,5 +85,21 @@ require("mason-lspconfig").setup_handlers {
 				}
 			}
 		}
+	end,
+
+	["texlab"] = function()
+		require("lspconfig").texlab.setup {
+			handlers = handlers,
+			on_attach = on_attach,
+			settings = {
+				texlab = {
+					auxDirectory = ".texlab",
+					build = {
+						args = { "-pdf", "-xelatex", "-interaction=nonstopmode", "-synctex=1", "-outdir=.texlab", "-pv", "%f" },
+						onSave = true
+					}
+				}
+			}
+		}
 	end
 }

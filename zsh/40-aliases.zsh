@@ -10,6 +10,9 @@ alias lla="exa -lah"
 alias mnt="ecryptfs-mount-private"
 alias umnt="ecryptfs-umount-private"
 
+# EWW
+alias eww="eww --config $EWW_CONFIG_DIR"
+
 if [[ $os == "Linux" ]]; then
     # mac emulation
     alias pbcopy='xsel --clipboard --input'
@@ -138,3 +141,6 @@ alias mv='nocorrect mv'
 
 # download youtubes
 alias ytd='yt-dlp "$(pbpaste)"'
+
+# Spotify cli
+alias spt='spotify_player'

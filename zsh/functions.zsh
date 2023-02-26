@@ -36,3 +36,12 @@ jq-to-less() {
 }
 
 alias jql='jq-to-less'
+
+keep-presence() {
+	DEGREES=0
+	while :; do
+		xdotool mousemove_relative -p $DEGREES 100
+		[[ $DEGREES -lt 180 ]] && DEGREES=180 || DEGREES=0
+		sleep 1m
+	done
+}

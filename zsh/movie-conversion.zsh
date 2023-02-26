@@ -95,7 +95,7 @@ convert() {
         args+=(-x264opts ref=4:bframes=16:b_strategy=2)
         args+=(-crf 24)
         #args+=(-t 120)
-        #args+=(-vf scale=-1:720)
+        args+=(-vf scale=-1:720)
         if [[ "$V_HEIGHT" -gt 1080 ]]; then
             args+=(-vf scale=-1:1080)
         fi

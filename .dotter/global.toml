@@ -15,8 +15,10 @@ gitignore = "~/.gitignore"
 "config" = { target = "~/.config", type = "symbolic" }
 "config/alacritty" = { target = "~/.config/alacritty", type = "template" }
 "config/spotifyd" = { target = "~/.config/spotifyd", type = "template" }
+"config/spotify-player" = { target = "~/.config/spotify-player", type = "template" }
 
 rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
+latexmkrc = "~/.latexmkrc"
 
 [pirating.files]
 "pirating" = "~/pirating"

@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
+export EWW_CONFIG_DIR=/home/kevin/.config/leftwm/themes/current/eww
 
 # Colors
 declare -A themeColors
