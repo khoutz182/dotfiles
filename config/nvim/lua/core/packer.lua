@@ -27,6 +27,12 @@ return require('packer').startup(function(use)
 
 	use("lewis6991/gitsigns.nvim")
 
+	-- lilypond
+	use({
+		"martineausimon/nvim-lilypond-suite",
+		requires = { "MunifTanjim/nui.nvim" }
+	})
+
 	-- snippets
 	use({
 		"L3MON4D3/LuaSnip",
