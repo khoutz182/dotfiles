@@ -3,6 +3,7 @@ export LANG=en_US.UTF-8
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 export EWW_CONFIG_DIR=/home/kevin/.config/leftwm/themes/current/eww
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # Colors
 declare -A themeColors
