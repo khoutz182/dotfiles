@@ -45,3 +45,28 @@ keep-presence() {
 		sleep 1m
 	done
 }
+
+dropdown() {
+	window=$(yabai -m query --windows | jq --arg app $1 '.[] | select(.app==$app)')
+	visible=$(echo $window | jq '."is-visible"')
+	id=$(echo $window | jq '.id')
+	hidden_space=2
+	echo "Visible = $visible"
+	echo "ID = $id"
+
+	if [ -z "$visible" ]; then
+		echo "conducting magic"
+		# wtf is this magic
+		osascript \
+			-e "on run (argv)" \
+			-e "tell application (item 1 of argv) to activate" \
+			-e "end" \
+			-- "$1"
+	elif [ "$visible" = true ]; then
+		echo "moving to the nether realm"
+		yabai -m window $id --space $hidden_space
+	else
+		echo "yeah whatever"
+		yabai -m window $id --space mouse && yabai -m window --focus $id
+	fi
+}
