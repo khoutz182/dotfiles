@@ -79,9 +79,9 @@
 
 # focus window
 alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
@@ -89,9 +89,24 @@ alt - k : yabai -m window --focus north
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
 shift + alt - h : yabai -m window --warp west
-shift + alt - l : yabai -m window --warp east
 shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east
+
+# Move focus between displays
+alt - i : yabai -m display --focus west
+alt - o : yabai -m display --focus east
+
+# Move window between displays
+shift + alt - i : yabai -m window --display west
+shift + alt - o : yabai -m window --display east
+
+# Move window between spaces
+alt - u : yabai -m window --space prev
+alt - p : yabai -m window --space next
+
+# Toggle fullscreen
+alt - f : yabai -m window --toggle --zoom-fullscreen
 
 # balance size of windows
 # shift + alt - 0 : yabai -m space --balance
@@ -103,10 +118,10 @@ shift + alt - k : yabai -m window --warp north
 # shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+# shift + cmd - n : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
 
 # fast focus desktop
 # cmd + alt - x : yabai -m space --focus recent
@@ -119,9 +134,6 @@ shift + cmd - n : yabai -m space --create && \
 # focus monitor
 # ctrl + alt - z  : yabai -m display --focus prev
 # ctrl + alt - 3  : yabai -m display --focus 3
-ctrl + alt - 1 : yabai -m display --focus 1
-ctrl + alt - 2 : yabai -m display --focus 2
-ctrl + alt - 3 : yabai -m display --focus 3
 
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
