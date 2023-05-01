@@ -25,3 +25,6 @@ latexmkrc = "~/.latexmkrc"
 
 [aws.files]
 aws = "~/.aws"
+
+[mwt.files]
+"mwt/zsh" = "~/.config/zsh"

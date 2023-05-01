@@ -14,7 +14,7 @@ unsetopt MAIL_WARNING
 unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
                             # Use >! and >>! to bypass.
 
-# autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # show completion menu when number of options is at least 2

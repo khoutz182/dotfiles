@@ -104,6 +104,7 @@ alias gds='git diff --staged'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdup='git diff @{upstream}'
 alias gdw='git diff --word-diff'
+alias gdss='git diff --shortstat'
 
 alias gri='git rebase -i'
 alias grim='git rebase -i $(git_main_branch)'

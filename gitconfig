@@ -1,9 +1,12 @@
 [user]
 	name = kevin.houtz
-	email = khoutz182+gh@pm.me
-	signingKey = {{signingKey}}
+	email = {{gitEmail}}
+	signingKey = {{gitSigningKey}}
+[gpg]
+	format = ssh
 [pull]
-	ff = only
+	; ff = only
+	rebase = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
