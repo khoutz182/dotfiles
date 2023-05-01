@@ -20,7 +20,6 @@ yabai -m config                                 \
     window_zoom_persist          on             \
     window_topmost               on             \
     window_shadow                on             \
-    window_animation_duration    0.0            \
     window_animation_frame_rate  120            \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
@@ -48,8 +47,12 @@ yabai -m config                                 \
     mouse_action2                resize         \
     mouse_drop_action            swap
 
+yabai -m config --space 9 layout stack
+
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^JetBrains Toolbox$" manage=off
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
 
 echo "yabai configuration loaded.."
