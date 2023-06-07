@@ -144,3 +144,8 @@ alias ytd='yt-dlp "$(pbpaste)"'
 
 # Spotify cli
 alias spt='spotify_player'
+
+# homebrew aliases
+alias bubo='brew update && brew outdated'
+alias bubc='brew upgrade && brew cleanup'
+alias bubu='bubo && bubc'

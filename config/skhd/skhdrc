@@ -116,7 +116,7 @@ shift + alt - 9 : yabai -m window --space 9
 alt - m : yabai -m space --layout stack
 alt - n : yabai -m space --layout bsp
 
-# Toggle fullscreen
+# Toggle fullscreen (Doesn't work for some reason)
 # alt - f : yabai -m window --toggle --zoom-fullscreen
 
 # balance size of windows

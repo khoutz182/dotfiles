@@ -5,8 +5,8 @@
 [gpg]
 	format = ssh
 [pull]
-	; ff = only
-	rebase = true
+	ff = only
+	; rebase = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
