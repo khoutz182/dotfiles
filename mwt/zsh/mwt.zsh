@@ -8,6 +8,9 @@ alias j8="export JAVA_HOME=~/Library/Java/JavaVirtualMachines/temurin-1.8.0_362/
 # Custom path
 export PATH="$HOME/.jenv/bin:$HOME/src/hoopla-bin:$JAVA_HOME/bin:$HOME/bin:$PATH"
 
+# Colima config
+export DOCKER_HOST="unix:///Users/kevinhoutz/.colima/default/docker.sock"
+
 # NVM *puke*
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -16,7 +19,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # EC2 helper
 ec2-ssh() {
-	privateIp=$(aws ec2 describe-instances --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
+	privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
+	echo "Private IP: $privateIp"
 	ssh -i ~/.ssh/alexandria-keypair.pem ec2-user@"${privateIp}"
+}
+
+ec2-scp() {
+	privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
+	scp -i ~/.ssh/alexandria-keypair.pem ec2-user@"${privateIp}":${2} ${3}
 }
 
