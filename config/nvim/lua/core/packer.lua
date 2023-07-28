@@ -69,6 +69,23 @@ return require('packer').startup(function(use)
 
 	use({"sindrets/diffview.nvim", requires = { "nvim-lua/plenary.nvim" }})
 
+	use({
+		"cameron-wags/rainbow_csv.nvim",
+		config = function ()
+			require "rainbow_csv".setup()
+		end,
+		module = {
+			"rainbow_csv",
+			"rainbow_csv.fns"
+		},
+		ft = {
+			"csv",
+			"tsv",
+			"csv_semicolon",
+			"csv_whitespace"
+		}
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

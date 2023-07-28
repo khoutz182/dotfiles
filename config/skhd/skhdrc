@@ -78,10 +78,12 @@
 # ############################################################### #
 
 # focus window
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south || yabai -m window --focus west || yabai -m window --focus stack.prev
-alt - k : yabai -m window --focus north || yabai -m window --focus east || yabai -m window --focus stack.next
-alt - l : yabai -m window --focus east
+# alt - h : yabai -m window --focus west
+# alt - j : yabai -m window --focus south || yabai -m window --focus west || yabai -m window --focus stack.prev || yabai -m window --focus stack.first
+# alt - k : yabai -m window --focus north || yabai -m window --focus east || yabai -m window --focus stack.next || yabai -m window --focus stack.last
+alt - j : yabai -m window --focus prev || yabai -m window --focus stack.prev || yabai -m window --focus stack.last || yabai -m window --focus last
+alt - k : yabai -m window --focus next || yabai -m window --focus stack.next || yabai -m window --focus stack.first || yabai -m window --focus first
+# alt - l : yabai -m window --focus east
 
 # swap managed window
 # shift + alt - h : yabai -m window --swap north
@@ -94,23 +96,23 @@ shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
 # Move focus between displays
-alt - i : yabai -m display --focus west
-alt - o : yabai -m display --focus east
+alt - h : yabai -m display --focus west
+alt - l : yabai -m display --focus east
 
 # Move window between displays
 shift + alt - i : yabai -m window --display west
 shift + alt - o : yabai -m window --display east
 
 # Move window between spaces
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
-shift + alt - 7 : yabai -m window --space 7
-shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
+shift + alt - 1 : yabai -m window --space 2
+shift + alt - 2 : yabai -m window --space 3
+shift + alt - 3 : yabai -m window --space 4
+shift + alt - 4 : yabai -m window --space 5
+shift + alt - 5 : yabai -m window --space 6
+shift + alt - 6 : yabai -m window --space 7
+shift + alt - 7 : yabai -m window --space 8
+shift + alt - 8 : yabai -m window --space 9
+shift + alt - 9 : yabai -m window --space 10
 
 # LeftWM monocle equivalent
 alt - m : yabai -m space --layout stack
