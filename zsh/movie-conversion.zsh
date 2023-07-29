@@ -46,7 +46,7 @@ capture() {
     # ffmpeg "${args[@]}"
 }
 
-convert() {
+legacy-convert() {
     if [ ! -f "$1" ]; then
         echo "File $1 not found."
         return -1
@@ -116,6 +116,49 @@ convert() {
 
     echo "args: ${args[@]}"
     ffmpeg "${args[@]}"
+}
+
+convert() {
+    V_HEIGHT=$(mediainfo --Inform="Video;%Height%" "$1")
+    V_WIDTH=$(mediainfo --Inform="Video;%Width%" "$1")
+    
+	args=(-hide_banner)
+	args+=(-benchmark)
+    # args+=(-nostats)
+    args+=(-loglevel info)
+    args+=(-vsync 0)
+	args+=(-hwaccel nvdec)
+ #    args+=(-hwaccel cuda)
+	# args+=(-hwaccel_output_format cuda)
+    args+=(-i "$1")
+    
+	# Use first video stream
+    # Use first audio stream
+    # Use all subtitle streams
+    # args+=(-map 0:v:0)
+    # args+=(-map 0:a:0)
+    # args+=(-map 0:s\?)
+	args+=(-map 0)
+    
+	args+=(-c:s mov_text)
+
+	args+=(-c:v h264_nvenc)
+	args+=(-pix_fmt yuv420p)
+	#
+	# args+=(-pix_fmt yuv444p)
+	# args+=(-pix_fmt cuda)
+	# args+=(-vf scale=${V_WIDTH}:${V_HEIGHT})
+	# args+=(-vf hwupload_cuda,scale_cuda=${V_WIDTH}:${V_HEIGHT})
+	# args+=(-vf hwupload_cuda,scale_npp=w=${V_WIDTH}:h=${V_HEIGHT})
+	# args+=(-vf scale_cuda=format=yuv420p)
+
+	args+=(-c:a aac)
+	args+=(-movflags faststart)
+
+    args+=("${1%.*}.converted.mp4")
+
+	echo "args: ${args[@]}"
+	ffmpeg "${args[@]}"
 }
 
 add-subs() {

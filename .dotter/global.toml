@@ -21,7 +21,8 @@ rofi_theme = "~/.local/share/rofi/themes/base16-gruvbox-dark-medium.rasi"
 latexmkrc = "~/.latexmkrc"
 
 [pirating.files]
-"pirating" = "~/pirating"
+"pirating/.env" = { target = "~/pirating/.env", type = "template" }
+"pirating/docker-compose.yml" = { target = "~/pirating/docker-compose.yml", type = "symbolic" }
 
 [aws.files]
 aws = "~/.aws"

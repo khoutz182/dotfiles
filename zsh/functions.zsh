@@ -35,6 +35,12 @@ jq-to-less() {
 	jq -C ${1} | less -R
 }
 
+toggle-headphones() {
+	SINK=$(pactl --format json list short sinks | jq -r '.[].name' | rg -i yeti)
+
+	pactl set-sink-mute $SINK toggle
+}
+
 alias jql='jq-to-less'
 
 keep-presence() {

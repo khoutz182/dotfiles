@@ -2,26 +2,27 @@ version: "3.4"
 services:
   vpn:
     container_name: vpn
-    image: ghcr.io/tprasadtp/protonvpn:latest
+    image: ghcr.io/tprasadtp/protonwire:latest
+    # init: true
     restart: unless-stopped
-    networks:
-      - internet
-      - proxy
     cap_add:
       - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
+    sysctls:
+      net.ipv4.conf.all.rp_filter: 2
+      net.ipv6.conf.all.disable_ipv6: 1
+    # devices:
+    #   - /dev/net/tun:/dev/net/tun
     # expose:
     #  - 8112
     ports:
       - 8112:8112
     environment:
-      PROTONVPN_USERNAME: ${PROTONVPN_USERNAME}
-      PROTONVPN_PASSWORD: ${PROTONVPN_PASSWORD}
-      PROTONVPN_SERVER: ${PROTONVPN_SERVER:-P2P}
-      PROTONVPN_TIER: ${PROTONVPN_TIER:-2}
-      PROTONVPN_PROTOCOL: ${PROTONVPN_PROTOCOL:-udp}
-      PROTONVPN_FAIL_THRESHOLD: ${PROTONVPN_FAIL_THRESHOLD:-999}
+      PROTONVPN_SERVER: ${PROTONVPN_SERVER}
+      WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+      # KILL_SWITCH: true
+    volumes:
+      - type: tmpfs
+        target: /tmp
   deluge:
     container_name: deluge
     image: linuxserver/deluge:latest
@@ -42,8 +43,6 @@ services:
     depends_on:
       - jackett
       - deluge
-    networks:
-      - internet
     ports:
       - 8989:8989
     environment:
@@ -62,8 +61,6 @@ services:
     restart: unless-stopped
     ports:
       - 9117:9117
-    networks:
-      - internet
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -75,8 +72,6 @@ services:
   radarr:
     container_name: radarr
     image: lscr.io/linuxserver/radarr:latest
-    networks:
-      - internet
     depends_on:
       - jackett
       - deluge
@@ -91,18 +86,18 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
-  unmanic:
-    container_name: unmanic
-    image: josh5/unmanic:latest
-    ports:
-      - 8888:8888
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-    volumes:
-      - ${DOWNLOAD_DIR}/complete:/library
-      - /tmp/unmanic-cache:/tmp/unmanic
-      - ./config/unmanic:/config
+  # unmanic:
+  #   container_name: unmanic
+  #   image: josh5/unmanic:latest
+  #   ports:
+  #     - 8888:8888
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #   volumes:
+  #     - ${DOWNLOAD_DIR}/complete:/library
+  #     - /tmp/unmanic-cache:/tmp/unmanic
+  #     - ./config/unmanic:/config
       #  tdarr:
       #    container_name: tdarr
       #    image: haveagitgat/tdarr:latest
@@ -157,7 +152,7 @@ services:
       #      - ./config/tdarr/cache:/temp
 
 
-networks:
-  internet:
-  proxy:
-    internal: true
+# networks:
+#   internet:
+#   proxy:
+#     internal: true

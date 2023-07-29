@@ -69,6 +69,7 @@
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "d"),
         (command: Execute, value: "rofi -show window", modifier: ["modkey"], key: "Tab"),
         (command: Execute, value: "wezterm", modifier: ["modkey"], key: "Return"),
+		(command: Execute, value: "toggle-headphones", modifier: ["modkey"], key: "F10"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: HardReload, value: "", modifier: ["modkey", "Control", "Shift"], key: "r"),

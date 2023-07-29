@@ -6,9 +6,8 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND="true"
 # https://unix.stackexchange.com/questions/197839/why-does-exporting-vim-as-editor-in-zsh-disable-keyboard-shortcuts
 bindkey -e # emacs
 
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'bat -l man -p'"
 
-# export GITHUB_TOKEN={{githubToken}}
 export POLYBAR_GITHUB_TOKEN={{polybar_ghToken}}
 export OPENWEATHERMAP_KEY={{openweathermapKey}}
 export JIRA_API_TOKEN={{jiraToken}}
