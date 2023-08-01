@@ -4,7 +4,7 @@ alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-
 alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
 alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
 alias j8="export JAVA_HOME=~/Library/Java/JavaVirtualMachines/temurin-1.8.0_362/Contents/Home; java -version"
-alias mwt-sso="aws sso login --sso-session mwt-sso"
+alias sso="aws sso login --sso-session mwt-sso"
 
 # Custom path
 export PATH="$HOME/.jenv/bin:$HOME/src/hoopla-bin:$JAVA_HOME/bin:$HOME/bin:$PATH"
@@ -21,12 +21,13 @@ export NVM_DIR="$HOME/.nvm"
 # EC2 helper
 ec2-ssh() {
 	privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
-	echo "Private IP: $privateIp"
+	ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
 	ssh -i ~/.ssh/alexandria-keypair.pem ec2-user@"${privateIp}"
 }
 
 ec2-scp() {
 	privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
+	ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
 	scp -i ~/.ssh/alexandria-keypair.pem ec2-user@"${privateIp}":${2} ${3}
 }
 
