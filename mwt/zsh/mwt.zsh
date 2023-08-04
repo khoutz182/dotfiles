@@ -1,13 +1,20 @@
 
 # Aliases
 alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain code-artifact --domain-owner 022811506149 --query authorizationToken --output text --profile mwtca`'
-alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
-alias j8="export JAVA_HOME=~/Library/Java/JavaVirtualMachines/temurin-1.8.0_362/Contents/Home; java -version"
 alias sso="aws sso login --sso-session mwt-sso"
 
 # Custom path
-export PATH="$HOME/.jenv/bin:$HOME/src/hoopla-bin:$JAVA_HOME/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$HOME/src/hoopla-bin:$HOME/bin:$PATH"
+
+# Java stuffs
+# install jdks with: brew tap homebrew/cask-versions && brew install --cask temurin<jdk_version>
+# add jdks with: jenv add "$(/usr/libexec/java_home -v <version>)"
+alias j17="jenv shell 17.0"
+alias j11="jenv shell 11.0"
+alias j8="jenv shell 1.8"
+
+# jenv
+eval "$(jenv init -)"
 
 # Colima config
 export DOCKER_HOST="unix:///Users/kevinhoutz/.colima/default/docker.sock"
