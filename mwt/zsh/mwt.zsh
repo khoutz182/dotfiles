@@ -92,3 +92,24 @@ get_vendor_report() {
 		--key "$PREFIX/$1" \
 		$1
 }
+
+# Usage: $ get_eb_env_logs <environment name> (<path>)
+get_eb_env_logs() {
+	[ -z "$1" ] && echo "Usage: $0 <environment name> <path>\npath is option, the default is '/var/log/tomcat/catalina.out'" && return
+
+	EB_ENV="$1"
+	TARGET_FILE="${2:-/var/log/tomcat/catalina.out}"
+
+	rm -rf "./${EB_ENV}" && mkdir -p "./${EB_ENV}"
+	# echo "target: $TARGET_FILE"
+
+	INSTANCES=$(aws elasticbeanstalk describe-environment-resources --profile mwt-hoopla --environment-name "$EB_ENV" --query "EnvironmentResources.Instances" --output text)
+
+	while IFS= read -r instance; do
+		mkdir -p "./${EB_ENV}/${instance}"
+		privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $instance --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
+		ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
+
+		scp -i ~/.ssh/alexandria-keypair.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@"${privateIp}":${TARGET_FILE} "./${EB_ENV}/${instance}/"
+	done <<< "$INSTANCES"
+}

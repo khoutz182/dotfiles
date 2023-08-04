@@ -1,0 +1,43 @@
+[default]
+region = us-east-1
+output = json
+
+[profile mwtca]
+role_arn = arn:aws:iam::022811506149:role/CodeArtifactAdminAccess
+source_profile = default
+region = us-east-1
+
+[profile mwt-ecom]
+sso_session = mwt-sso
+sso_account_id = 022811506149
+sso_role_name = AdminBilling
+source_profile = default
+
+[profile mwt-master]
+sso_session = mwt-sso
+sso_account_id = 271563910642
+sso_role_name = BillingReadOnly
+source_profile = default
+region = us-east-1
+
+[profile mwt-hoopla]
+region = us-east-1
+output = json
+sso_session = mwt-sso
+sso_account_id = 058253789961
+sso_role_name = PowerUserAccess
+
+[profile terraform]
+region = us-east-1
+output = json
+sso_account_id = 058253789961
+sso_role_name = PowerUserAccess
+sso_start_url = https://mwtsso.awsapps.com/start
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+
+[sso-session mwt-sso]
+sso_start_url = https://mwtsso.awsapps.com/start
+region = us-east-1
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access

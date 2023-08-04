@@ -13,6 +13,7 @@
 
 # global settings
 yabai -m config                                 \
+	debug_output                 off            \
     mouse_follows_focus          on             \
     focus_follows_mouse          autofocus      \
     window_origin_display        default        \
@@ -53,7 +54,6 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
-yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
 
 echo "yabai configuration loaded.."
 
