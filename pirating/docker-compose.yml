@@ -23,9 +23,9 @@ services:
     volumes:
       - type: tmpfs
         target: /tmp
-  deluge:
-    container_name: deluge
-    image: linuxserver/deluge:latest
+  qbittorrent:
+    container_name: qbittorrent-nox
+    image: qbittorrentofficial/qbittorrent-nox:latest
     network_mode: service:vpn
     depends_on:
       - vpn
@@ -33,16 +33,31 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - QBT_EULA=accept
+      - QBT_WEBUI_PORT=${QBT_WEBUI_PORT}
     volumes:
       - ${DOWNLOAD_DIR}/downloads:/downloads
-      - ./config/deluge:/config
+      - ./config/qbittorrent:/config
+  # deluge:
+  #   container_name: deluge
+  #   image: linuxserver/deluge:latest
+  #   network_mode: service:vpn
+  #   depends_on:
+  #     - vpn
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=${TZ}
+  #   volumes:
+  #     - ${DOWNLOAD_DIR}/downloads:/downloads
+  #     - ./config/deluge:/config
   sonarr:
     container_name: sonarr
     image: lscr.io/linuxserver/sonarr:latest
     restart: unless-stopped
     depends_on:
       - jackett
-      - deluge
+      - qbittorrent
     ports:
       - 8989:8989
     environment:
@@ -74,7 +89,7 @@ services:
     image: lscr.io/linuxserver/radarr:latest
     depends_on:
       - jackett
-      - deluge
+      - qbittorrent
     environment:
       - PUID=${PGID}
       - PGID=${PGID}
