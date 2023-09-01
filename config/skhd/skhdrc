@@ -127,6 +127,9 @@ shift + alt - 0 : yabai -m space --balance
 # Focus terminal
 alt - t : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app == "WezTerm") | .id')
 
+# Focus intellij
+alt - i : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app == "IntelliJ IDEA") | .id')
+
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 

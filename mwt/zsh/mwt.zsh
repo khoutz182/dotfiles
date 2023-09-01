@@ -1,10 +1,10 @@
 
 # Aliases
-alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain code-artifact --domain-owner 022811506149 --query authorizationToken --output text --profile mwtca`'
+alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain code-artifact --domain-owner 022811506149 --query authorizationToken --output text --profile mwt-ecom`'
 alias sso="aws sso login --sso-session mwt-sso"
 
 # Custom path
-export PATH="$HOME/.jenv/bin:$HOME/src/hoopla-bin:$HOME/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$HOME/src/mwt/hoopla/hoopla-bin:$HOME/bin:$PATH"
 
 # Java stuffs
 # install jdks with: brew tap homebrew/cask-versions && brew install --cask temurin<jdk_version>
@@ -63,7 +63,7 @@ get_first_months_reports() {
 	CURRENT_YEAR=$(date +%Y)
 	PREFIX="vendor_reports/${ENVIRONMENT}/${REPORT}/${CURRENT_YEAR}/"
 
-	REPORT_DATE="${CURRENT_YEAR}-${1}-01"
+	REPORT_DATE="${CURRENT_YEAR}-${1}-09"
 
 	KEYS=$(aws s3api list-objects-v2 \
 		--profile mwt-hoopla \
