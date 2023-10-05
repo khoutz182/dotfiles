@@ -35,6 +35,8 @@
     file-style = bold yellow ul
     file-decoration-style = blue ol
     hunk-header-style = omit
+[diff]
+	colorMoved = default
 [merge]
     conflictstyle = diff3
     tool = nvim
@@ -50,12 +52,12 @@
 [mergetool "nvim"]
 	cmd = "nvim -c 'DiffviewOpen'"
 
-[credential "https://git-codecommit.us-east-1.amazonaws.com"]
+[credential]
         helper =
         helper = !aws --profile ${AWS_PROFILE} codecommit credential-helper $@
         UseHttpPath = true
 
-[credential "https://github.com"]
-        helper = osxkeychain
+; [credential "https://github.com"]
+;         helper = osxkeychain
 
 # vim:ft=gitconfig

@@ -16,6 +16,9 @@ alias j8="jenv shell 1.8"
 # jenv
 eval "$(jenv init -)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Colima config
 export DOCKER_HOST="unix:///Users/kevinhoutz/.colima/default/docker.sock"
 
