@@ -16,7 +16,7 @@ local plugins = {
 }
 
 for _, plugin in ipairs(plugins) do
-	local ok, err = pcall(require, "plugins." .. plugin)
+	local ok, err = pcall(require, "config." .. plugin)
 	if not ok then
 		error("Error loading " .. plugin .. "\n\n" .. err)
 	end

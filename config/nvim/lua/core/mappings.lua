@@ -6,7 +6,7 @@ end
 
 -- "," is the <leader>
 map('n', ',', '', {})
-vim.g.mapleader = ','
+-- vim.g.mapleader = ',' -- added to lazy
 
 
 -- fuzzy finder

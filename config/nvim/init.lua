@@ -5,9 +5,9 @@
 
 
 local modules = {
-	"core.packer",
+	"core.lazy",
 	"core.options",
-	"plugins",
+	"config",
 	"core.mappings"
 }
 
