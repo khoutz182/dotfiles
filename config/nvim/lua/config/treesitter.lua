@@ -1,9 +1,8 @@
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "lua", "rust", "dockerfile", "hcl", "yaml", "kotlin", "java", "python" },
+require 'nvim-treesitter.configs'.setup {
+	ensure_installed = { "lua", "rust", "dockerfile", "hcl", "yaml", "kotlin", "java", "python", "markdown" },
 
 	highlight = {
 		enable = true,
-
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
 		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -12,12 +11,12 @@ require'nvim-treesitter.configs'.setup {
 	}
 }
 
-local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
+local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.gotmpl = {
 	install_info = {
 		url = "https://github.com/ngalaiko/tree-sitter-go-template",
-    files = {"src/parser.c"}
-  },
-  filetype = "gotmpl",
-  used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"}
+		files = { "src/parser.c" }
+	},
+	filetype = "gotmpl",
+	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" }
 }
