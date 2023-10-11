@@ -22,7 +22,7 @@ latexmkrc = "~/.latexmkrc"
 
 [pirating.files]
 "pirating/.env" = { target = "~/pirating/.env", type = "template" }
-"pirating/docker-compose.yml" = { target = "~/pirating/docker-compose.yml", type = "symbolic" }
+"pirating/compose.yml" = { target = "~/pirating/compose.yml", type = "template" }
 
 [aws.files]
 aws = "~/.aws"
