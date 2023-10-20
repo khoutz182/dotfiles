@@ -116,7 +116,7 @@ alias ggpush='git push origin "$(git_current_branch)"'
 
 alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
-alias gl='git pull'
+alias gpull='git pull --prune'
 alias glg='git log --stat'
 alias glgp='git log --stat -p'
 alias glgg='git log --graph'

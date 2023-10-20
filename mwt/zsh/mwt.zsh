@@ -29,6 +29,14 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # EC2 helper
+alias ec2ip="aws ec2 describe-instances --profile mwt-hoopla --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text --instance-ids"
+
+ec2-jstat() {
+	privateIp=$(ec2ip $1)
+	ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
+	ssh -i ~/.ssh/alexandria-keypair.pem -D 9696 ec2-user@"${privateIp}"
+}
+
 ec2-ssh() {
 	privateIp=$(aws ec2 describe-instances --profile mwt-hoopla --instance-ids $1 --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
 	ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
