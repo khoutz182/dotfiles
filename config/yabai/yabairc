@@ -58,3 +58,8 @@ yabai -m rule --add app="^iTerm2$" manage=off
 
 echo "yabai configuration loaded.."
 
+end=$(yabai -m query --spaces | jq 'length')
+
+for i in $(seq 1 $end); do
+    yabai -m space $i --label "SPACE-$i"
+done

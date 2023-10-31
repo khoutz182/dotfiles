@@ -104,15 +104,15 @@ shift + alt - i : yabai -m window --display west
 shift + alt - o : yabai -m window --display east
 
 # Move window between spaces
-shift + alt - 1 : yabai -m window --space 1
-shift + alt - 2 : yabai -m window --space 2
-shift + alt - 3 : yabai -m window --space 3
-shift + alt - 4 : yabai -m window --space 4
-shift + alt - 5 : yabai -m window --space 5
-shift + alt - 6 : yabai -m window --space 6
-shift + alt - 7 : yabai -m window --space 7
-shift + alt - 8 : yabai -m window --space 8
-shift + alt - 9 : yabai -m window --space 9
+shift + alt - 1 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[0].label")
+shift + alt - 2 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[1].label")
+shift + alt - 3 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[2].label")
+shift + alt - 4 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[3].label")
+shift + alt - 5 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[4].label")
+shift + alt - 6 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[5].label")
+shift + alt - 7 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[6].label")
+shift + alt - 8 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[7].label")
+shift + alt - 9 : yabai -m window --space $(yabai -m query --spaces | jq -r "map(select(.\"is-native-fullscreen\" == false)) | sort_by(.index)[8].label")
 
 # LeftWM monocle equivalent
 alt - m : yabai -m space --layout stack
