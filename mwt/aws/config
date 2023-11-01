@@ -1,6 +1,11 @@
 [default]
 region = us-east-1
 output = json
+sso_session = mwt-sso
+sso_account_id = 058253789961
+sso_role_name = PowerUserAccess
+sso_start_url = https://mwtsso.awsapps.com/start
+sso_region = us-east-1
 
 [profile mwt-ecom]
 sso_session = mwt-sso
