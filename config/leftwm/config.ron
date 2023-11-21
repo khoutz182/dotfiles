@@ -23,7 +23,6 @@
         "8",
         "9",
     ],
-    max_window_width: None,
     layouts: [
         "MainAndVertStack",
         "MainAndHorizontalStack",
@@ -54,8 +53,8 @@
     auto_derive_workspaces: true,
     keybind: [
         (command: ToggleScratchPad, value: "Alacritty", modifier: ["modkey"], key: "p"),
-        (command: IncreaseMainWidth, value: "5", modifier: ["modkey"], key: "a"),
-        (command: DecreaseMainWidth, value: "5", modifier: ["modkey"], key: "x"),
+        (command: IncreaseMainSize, value: "5", modifier: ["modkey"], key: "a"),
+        (command: DecreaseMainSize, value: "5", modifier: ["modkey"], key: "x"),
         (command: Execute, value: "flameshot gui", modifier: [], key: "Print"),
         (command: Execute, value: "pass otp aws-secret -c && dunstify \"aws otp copied\"", modifier: ["modkey"], key: "o"),
         (command: Execute, value: "spt pb -d $(spt l -d | rg spotifyd | awk \'{print $2}\') -t", modifier: [], key: "XF86XK_AudioPlay"),
