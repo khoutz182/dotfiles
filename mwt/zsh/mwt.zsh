@@ -4,7 +4,7 @@ alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-
 alias sso="aws sso login --sso-session mwt-sso"
 
 # Custom path
-export PATH="$HOME/.jenv/bin:$HOME/src/mwt/hoopla/hoopla-bin:$HOME/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$HOME/src/mwt/hoopla/hoopla-bin:$HOME/bin:/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Java stuffs
 # install jdks with: brew tap homebrew/cask-versions && brew install --cask temurin<jdk_version>

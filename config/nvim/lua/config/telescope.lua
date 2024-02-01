@@ -8,6 +8,7 @@ require('telescope').setup({
 			"rg",
 			"--color=never",
 			"--no-heading",
+			"--no-ignore-vcs",
 			"--with-filename",
 			"--line-number",
 			"--column",

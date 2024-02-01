@@ -16,6 +16,7 @@ map('', '<leader>fb', require('telescope.builtin').buffers)
 map('', '<leader>gs', require('telescope.builtin').grep_string)
 map('', '<leader>ts', require('telescope.builtin').treesitter)
 
+-- lsp commands
 map('', '<leader>lds', require('telescope.builtin').lsp_document_symbols)
 map('', '<leader>lws', require('telescope.builtin').lsp_workspace_symbols)
 
