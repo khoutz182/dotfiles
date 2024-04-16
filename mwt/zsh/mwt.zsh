@@ -131,9 +131,9 @@ get_eb_env_logs() {
 
 eb-ssh() {
 	environment=$(aws elasticbeanstalk describe-environments \
-		--query "Environments[*].EnvironmentName" \
-		--output json \
-		| jq '.[]' -r \
+		--no-include-deleted \
+		--query "Environments[*].[EnvironmentName]" \
+		--output text \
 		| fzf)
 
 	[ -z "$environment" ] && echo "no environment selected" && return
