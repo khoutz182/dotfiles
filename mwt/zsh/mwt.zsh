@@ -4,7 +4,7 @@ alias mwtca='export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-
 alias sso="aws sso login --sso-session mwt-sso"
 
 # Custom path
-export PATH="$HOME/.jenv/bin:$HOME/src/mwt/hoopla/hoopla-bin:$HOME/bin:/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$HOME/src/mwt/hoopla/hoopla-bin:$HOME/bin:/opt/homebrew/bin:$PATH"
 
 # Java stuffs
 # install jdks with: brew tap homebrew/cask-versions && brew install --cask temurin<jdk_version>
@@ -127,4 +127,42 @@ get_eb_env_logs() {
 
 		scp -i ~/.ssh/alexandria-keypair.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@"${privateIp}":${TARGET_FILE} "./${EB_ENV}/${instance}/"
 	done <<< "$INSTANCES"
+}
+
+eb-ssh() {
+	environment=$(aws elasticbeanstalk describe-environments \
+		--query "Environments[*].EnvironmentName" \
+		--output json \
+		| jq '.[]' -r \
+		| fzf)
+
+	[ -z "$environment" ] && echo "no environment selected" && return
+
+	instances=$(aws elasticbeanstalk describe-instances-health \
+		--environment-name $environment \
+		--attribute-names HealthStatus LaunchedAt \
+		--query "InstanceHealthList[*]" \
+		| jq -r '.[] | .InstanceId + " " + .HealthStatus + ", Launched at: " + .LaunchedAt')
+
+	if (( $( echo "${instances}" | wc -l ) == 1 )); then
+		instance=$(echo $instances | awk '{ print $1 }')
+	else
+		instance=$(echo ${instances} | fzf --bind 'enter:become(echo {1})')
+	fi
+
+	[ -z "$instance" ] && echo "no instance selected" && return
+
+	privateIp=$(aws ec2 describe-instances \
+		--instance-ids $instance \
+		--query 'Reservations[0].Instances[0].PrivateIpAddress' \
+		--output text)
+
+	ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${privateIp}
+
+	# don't try this at home kids
+	ssh \
+		-i ~/.ssh/alexandria-keypair.pem \
+		-o "StrictHostKeyChecking=no" \
+		ec2-user@"${privateIp}" \
+		-t "export PS1=\"${environment}:${instance} $ \"; exec bash"
 }
