@@ -59,6 +59,9 @@ return {
 	{ 'kyazdani42/nvim-tree.lua', dependencies = { 'kyazdani42/nvim-web-devicons' } },
 	{"sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" }},
 
+	-- ron syntax highlighting (leftwm),
+	"ron-rs/ron.vim",
+
 	-- {
 	-- 	"cameron-wags/rainbow_csv.nvim",
 	-- 	config = function ()

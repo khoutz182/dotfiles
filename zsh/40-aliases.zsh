@@ -1,6 +1,6 @@
 # Aliases
 alias zrl="source ~/.zshrc"
-alias sxiv="sxiv -r -t -p"
+alias sxiv="nsxiv -r -t -p"
 alias vim="nvim"
 alias ls="exa"
 alias l="exa -lh"
@@ -21,6 +21,7 @@ fi
 
 # Docker helpers
 alias dc='docker-compose'
+alias pc='podman compose'
 
 # kubeseal quick hack
 # alias kubeseal='kubeseal --controller-namespace infra-sealed-secrets --controller-name infrastructure-sealed-secrets -o yaml'

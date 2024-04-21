@@ -42,13 +42,8 @@ opt.encoding = "utf-8"
 
 vim.g.python3_host_prog = '/usr/bin/python3'
 
-vim.cmd [[
-	filetype plugin indent on
-	set indentkeys-=0#
-
-	augroup packer_user_config
-		autocmd!
-		autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-	augroup end
-]]
+-- vim.cmd [[
+-- 	filetype plugin indent on
+-- 	set indentkeys-=0#
+-- ]]
 
