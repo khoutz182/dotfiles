@@ -8,6 +8,15 @@ return {
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"nvimtools/none-ls.nvim",
+		},
+	},
+
 	"SmiteshP/nvim-navic",
 
 	-- completion
@@ -49,6 +58,14 @@ return {
 
 	-- LaTeX editing
 	{ "lervag/vimtex", lazy = true },
+
+	-- typst editing
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false,
+		version = "0.2.*",
+		build = function () require "typst-preview".update() end,
+	},
 
 	-- Commenting
 	"numToStr/Comment.nvim",

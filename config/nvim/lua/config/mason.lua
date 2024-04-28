@@ -1,4 +1,7 @@
 require("mason").setup()
+require("mason-null-ls").setup({
+	handlers = {},
+})
 require("mason-lspconfig").setup()
 
 -- navigation
@@ -103,5 +106,13 @@ require("mason-lspconfig").setup_handlers {
 				}
 			}
 		}
-	end
+	end,
+
+	["typst_lsp"] = function()
+		require("lspconfig").typst_lsp.setup {
+			settings = {
+				exportPdf = "onSave"
+			}
+		}
+	end,
 }

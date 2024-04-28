@@ -1,5 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
-	ensure_installed = { "lua", "rust", "dockerfile", "hcl", "yaml", "kotlin", "java", "python", "markdown" },
+	ensure_installed = { "lua", "rust", "dockerfile", "hcl", "yaml", "kotlin", "java", "python", "markdown", "typst" },
 
 	highlight = {
 		enable = true,
